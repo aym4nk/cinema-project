@@ -32,12 +32,29 @@
             <a class="link" href="{{ path('contact') }}">Contact</a>
         </nav>
 
-        <div class="btn_head">
-            {% include 'film/_add_button.html.twig' %}
-            <button class="btn_h"><a class="l" href="{{ path('login') }}">login</a></button>
-            <button class="btn_h"><a class="l" href="{{ path('register') }}">register</a></button>
+<div class="btn_head">
+    {% include 'film/_add_button.html.twig' %}
 
-        </div>
+    {% if app.user %}
+        <span class="user_info">
+            {{ app.user.nom }} {{ app.user.prenom }}
+        </span>
+
+        <form method="post" action="{{ path('logout') }}">
+            <input type="hidden" name="_csrf_token" value="{{ csrf_token('logout') }}">
+            <button class="btn_h_log">Logout</button>
+        </form>
+    {% else %}
+        <button class="btn_h">
+            <a class="l" href="{{ path('login') }}">login</a>
+        </button>
+
+        <button class="btn_h">
+            <a class="l" href="{{ path('register') }}">register</a>
+        </button>
+    {% endif %}
+</div>
+
     </div>
 </header>
 
@@ -113,6 +130,24 @@
         </div>
     </div>
 </footer>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    const elements = document.querySelectorAll(".animate-on-scroll");
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add("show");
+                observer.unobserve(entry.target);
+            }
+        });
+    }, {
+        threshold: 0.15
+    });
+
+    elements.forEach(el => observer.observe(el));
+});
+</script>
 
 </body>
 </html>

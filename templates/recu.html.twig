@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Reçu de réservation{% endblock %}
+
+{% block stylesheets %}
+<link rel="stylesheet" href="{{ asset('css/recu.css') }}">
+{% endblock %}
+
+{% block body %}
+<div class="recu-container">
+
+    <div class="recu-card">
+        <h1 class="recu-title">🎟️ Reçu de réservation</h1>
+
+        <div class="recu-film">
+            <img src="{{ asset('uploads/images/' ~ film.imageFilename) }}"
+                 alt="{{ film.title }}">
+
+            <div class="film-info">
+                <h2>{{ film.title }}</h2>
+                <p><strong>Date :</strong> {{ date }}</p>
+                <p><strong>Heure :</strong> {{ time }}</p>
+                <p><strong>Salle :</strong> {{ salle }}</p>
+            </div>
+        </div>
+
+        <div class="recu-user">
+            <h3>Informations client</h3>
+            <p><strong>Nom :</strong> {{ app.user.nom }} {{ app.user.prenom }}</p>
+            <p><strong>Email :</strong> {{ app.user.email }}</p>
+        </div>
+
+        <div class="recu-footer">
+            <p>Merci pour votre réservation 🎬</p>
+        <a href="{{ path('recu_pdf', {
+            id: film.id,
+            date: date,
+            time: time
+        }) }}" class="btn-back">
+            Télécharger le PDF
+        </a>
+
+        </div>
+    </div>
+
+</div>
+{% endblock %}

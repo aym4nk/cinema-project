@@ -18,7 +18,9 @@
                 <h2 class="h2_sign">Recevez toute l'actualité de votre Cinemas Casablanca.</h2>
             </div>
 
-            <form class="form-sign" id="signupForm">
+        <form class="form-sign"
+              method="post"
+              action="{{ path('register') }}">
                 <div class="divsign">
                     <div class="imghh">
                         <img class="im standard-image" src="{{ asset('images/img2.png') }}" alt="cinema">

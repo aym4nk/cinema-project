@@ -14,15 +14,19 @@
 <div class="films-grid">
     {% for film in films %}
         <a href="{{ path('film_details', { id: film.id }) }}" class="film-link">
-            <div class="film-card">
-                {% if film.imageFilename %}
-                    <img src="{{ asset('uploads/images/' ~ film.imageFilename) }}">
-                {% endif %}
+<div class="film-card animate-on-scroll">
+    {% if film.imageFilename %}
+        <img 
+            src="{{ asset('uploads/images/' ~ film.imageFilename) }}"
+            loading="lazy"
+            alt="{{ film.title }}"
+        >
+    {% endif %}
 
-                <div class="film-info">
-                    <h2>{{ film.title }}</h2>
-                </div>
-            </div>
+    <div class="film-info">
+        <h2>{{ film.title }}</h2>
+    </div>
+</div>
         </a>
     {% endfor %}
 </div>

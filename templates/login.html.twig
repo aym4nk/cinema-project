@@ -7,42 +7,61 @@
 {% endblock %}
 
 {% block body %}
-<body  class="container-login main-log">
+<div class="container-login main-log">
 
-    <div class="container-login main-log">
+    <h2 class="title-login">
+        Bonjour dans votre Cinéma Casablanca
+    </h2>
 
-        <h2 class="title-login">
-            Bonjour dans votre Cinéma Casablanca
-        </h2>
+    <div class="card-login">
+        <div class="logtitle">
+            <h1>Connectez-vous à Cinemas</h1>
+            <h2 class="h2_log">Recevez toute l'actualité de votre Cinemas Casablanca.</h2>
+        </div>
 
-        <div class="card-login">
-            <div class="logtitle">
-                <h1>Connectez-vous à Cinemas</h1>
-                <h2 class="h2_log">Recevez toute l'actualité de votre Cinemas Casablanca.</h2>
+        {# ✅ ERROR MESSAGE #}
+        {% if error %}
+            <div class="error-login">
+                {{ error.messageKey|trans(error.messageData, 'security') }}
+            </div>
+        {% endif %}
+
+        <form
+            class="form-login"
+            method="post"
+            action="{{ path('login') }}"
+        >
+
+            <div class="divlog">
+                <div class="imgh">
+                    <img class="im" src="{{ asset('images/img1.png') }}" alt="cinema">
+                </div>
+
+                <div class="formulaire">
+                    <input
+                        class="input-log"
+                        type="email"
+                        name="_username"
+                        value="{{ last_username }}"
+                        placeholder="Email"
+                        required
+                    >
+                    <br><br>
+
+                    <input
+                        class="input-log"
+                        type="password"
+                        name="_password"
+                        placeholder="Mot de passe"
+                        required
+                    >
+                    <br>
+
+                    <input class="btn-log" type="submit" value="Se connecter">
+                </div>
             </div>
 
-            <form class="form-login" id="loginForm">
-
-                <div class="loading-container" id="loading" style="display:none;">
-                    <div class="spinner"></div>
-                </div>
-
-                <div class="divlog">
-                    <div class="imgh">
-                        <img class="im" src="{{ asset('images/img1.png') }}" alt="cinema">
-                    </div>
-
-                    <div class="formulaire">
-                        <input class="input-log" type="email" name="email" placeholder="Email" required>
-                        <br><br>
-                        <input class="input-log" type="password" name="password" placeholder="Mot de passe" required>
-                        <br>
-                        <input class="btn-log" type="submit" value="Se connecter">
-                    </div>
-                </div>
-
-            </form>
-        </div>
+        </form>
     </div>
-    </body>
+</div>
 {% endblock %}

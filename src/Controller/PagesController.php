@@ -1,19 +1,30 @@
 <?php
 
 namespace App\Controller;
-
+use Dompdf\Dompdf;
+use Dompdf\Options;
+use Symfony\Component\HttpFoundation\ResponseHeaderBag;
+use App\Entity\Film; // ✅ مهم
 use App\Repository\FilmRepository;
+use App\Repository\UserRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request; // ✅ مهم
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 
 class PagesController extends AbstractController
 {
     #[Route('/', name: 'acceuil')]
     public function acceuil(FilmRepository $filmRepository): Response
     {
+        // 🔴 admin ما يشوفش accueil
+        if ($this->isGranted('ROLE_ADMIN')) {
+            return $this->redirectToRoute('dash');
+        }
+
         return $this->render('acceuil.html.twig', [
-            'films' => $filmRepository->findAll(), // ✅ OBLIGATOIRE
+            'films' => $filmRepository->findAll(),
         ]);
     }
 
@@ -29,10 +40,21 @@ class PagesController extends AbstractController
         return $this->render('contact.html.twig');
     }
 
+    // ✅ LOGIN
     #[Route('/login', name: 'login')]
-    public function login(): Response
+    public function login(AuthenticationUtils $authenticationUtils): Response
     {
-        return $this->render('login.html.twig');
+        if ($this->getUser()) {
+            if ($this->isGranted('ROLE_ADMIN')) {
+                return $this->redirectToRoute('dash');
+            }
+            return $this->redirectToRoute('acceuil');
+        }
+
+        return $this->render('login.html.twig', [
+            'last_username' => $authenticationUtils->getLastUsername(),
+            'error' => $authenticationUtils->getLastAuthenticationError(),
+        ]);
     }
 
     #[Route('/register', name: 'register')]
@@ -41,12 +63,85 @@ class PagesController extends AbstractController
         return $this->render('register.html.twig');
     }
 
+    // ✅ DASHBOARD
     #[Route('/dash', name: 'dash')]
-    public function dash(FilmRepository $filmRepository): Response
-    {
+    public function dash(
+        FilmRepository $filmRepository,
+        UserRepository $userRepository
+    ): Response {
+        $this->denyAccessUnlessGranted('ROLE_ADMIN');
+
         return $this->render('dashboard.html.twig', [
             'films' => $filmRepository->findAll(),
-            'users' => [], // OK provisoire
+            'users' => $userRepository->findAll(),
         ]);
     }
+
+    #[Route('/logout', name: 'logout')]
+    public function logout(): void
+    {
+        // Symfony handles this
+    }
+
+    // ✅ RECU
+    #[Route('/recu/{id}', name: 'recu')]
+    public function recu(
+        Film $film,
+        Request $request
+    ): Response {
+        $this->denyAccessUnlessGranted('ROLE_USER');
+
+        $date = $request->query->get('date');
+        $time = $request->query->get('time');
+
+        return $this->render('recu.html.twig', [
+            'film' => $film,
+            'date' => $date,
+            'time' => $time,
+            'salle' => random_int(1, 8),
+        ]);
+    }
+    #[Route('/recu/{id}/pdf', name: 'recu_pdf')]
+public function recuPdf(
+    Film $film,
+    Request $request
+): Response {
+    $this->denyAccessUnlessGranted('ROLE_USER');
+
+    $date = $request->query->get('date');
+    $time = $request->query->get('time');
+    $salle = random_int(1, 8);
+
+    // 1️⃣ HTML ديال PDF
+    $html = $this->renderView('recu_pdf.html.twig', [
+        'film' => $film,
+        'date' => $date,
+        'time' => $time,
+        'salle' => $salle,
+        'user' => $this->getUser(),
+    ]);
+
+        // 2️⃣ إعدادات Dompdf
+        $options = new Options();
+        $options->set('defaultFont', 'Helvetica');
+        $options->set('isRemoteEnabled', true);
+
+        $dompdf = new Dompdf($options);
+        $dompdf->loadHtml($html);
+        $dompdf->setPaper('A4', 'portrait');
+        $dompdf->render();
+
+        // 3️⃣ Response تحميل
+        $response = new Response($dompdf->output());
+        $disposition = $response->headers->makeDisposition(
+            ResponseHeaderBag::DISPOSITION_ATTACHMENT,
+            'recu_'.$film->getId().'.pdf'
+        );
+
+        $response->headers->set('Content-Type', 'application/pdf');
+        $response->headers->set('Content-Disposition', $disposition);
+
+        return $response;
+    }
+
 }

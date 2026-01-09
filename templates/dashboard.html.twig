@@ -17,7 +17,7 @@
                     <th>Affiche</th>
                     <th>Titre</th>
                     <th>Réalisateur</th>
-                    <th>description</th>
+                    <th>Description</th>
                     <th>Actions</th>
                 </tr>
             </thead>
@@ -26,21 +26,38 @@
                     <tr>
                         <td>
                             {% if film.imageFilename %}
-                                <img src="{{ asset('uploads/images/' ~ film.imageFilename) }}" alt="{{ film.title }}">
+                                <img src="{{ asset('uploads/images/' ~ film.imageFilename) }}"
+                                     alt="{{ film.title }}">
                             {% else %}
                                 —
                             {% endif %}
                         </td>
+
                         <td>{{ film.title }}</td>
                         <td>{{ film.director }}</td>
-                        <td>{{ film.description }}</td>
-                        <td>
-                            <a href="{{ path('film_edit', {id: film.id}) }}" class="btn-edit">Modifier</a>
 
-                            <form method="post" action="{{ path('film_delete', {id: film.id}) }}" style="display:inline" onsubmit="return confirm('Voulez-vous supprimer ce film ?');">
-                                <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ film.id) }}">
-                                <button class="btn-delete">Supprimer</button>
-                            </form>
+                        {# ✅ description صغيرة + scroll #}
+                        <td class="desc-cell">
+                            {{ film.description }}
+                        </td>
+
+                        {# ✅ buttons مع gap #}
+                        <td>
+                            <div class="action-buttons">
+                                <a href="{{ path('film_edit', {id: film.id}) }}"
+                                   class="btn-edit">
+                                    Modifier
+                                </a>
+
+                                <form method="post"
+                                      action="{{ path('film_delete', {id: film.id}) }}"
+                                      onsubmit="return confirm('Voulez-vous supprimer ce film ?');">
+                                    <input type="hidden"
+                                           name="_token"
+                                           value="{{ csrf_token('delete' ~ film.id) }}">
+                                    <button class="btn-delete">Supprimer</button>
+                                </form>
+                            </div>
                         </td>
                     </tr>
                 {% else %}
@@ -66,7 +83,7 @@
                     <th>Nom</th>
                     <th>Prénom</th>
                     <th>Email</th>
-                    <th>Supprimer</th>
+                    <th>Action</th>
                 </tr>
             </thead>
             <tbody>
@@ -76,10 +93,17 @@
                         <td>{{ user.prenom }}</td>
                         <td>{{ user.email }}</td>
                         <td>
-                            <form method="post" action="{{ path('user_delete', {id: user.id}) }}"
-                                  onsubmit="return confirm('Supprimer cet utilisateur ?');">
-                                <button class="btn-delete2">Oui</button>
-                            </form>
+                            {% if 'ROLE_ADMIN' not in user.roles %}
+                                <form method="post"
+                                      action="{{ path('user_delete', {id: user.id}) }}"
+                                      onsubmit="return confirm('Supprimer cet utilisateur ?');">
+                                    <button class="btn-delete2">Supprimer</button>
+                                </form>
+                            {% else %}
+                                <span style="color: gray; font-weight: bold;">
+                                    ADMIN
+                                </span>
+                            {% endif %}
                         </td>
                     </tr>
                 {% else %}

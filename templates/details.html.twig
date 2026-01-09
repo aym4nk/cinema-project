@@ -49,11 +49,14 @@
             <div class="times">
                 {% for time in times %}
                     {% set showDateTime = date(day|date('Y-m-d') ~ ' ' ~ time) %}
-
                     {% if isToday and showDateTime > now %}
-                        <button class="time-btn">
+                        <a href="{{ path('recu', {
+                            id: film.id,
+                            date: day|date('Y-m-d'),
+                            time: time
+                        }) }}" class="time-btn">
                             {{ time }}
-                        </button>
+                        </a>
                     {% else %}
                         <button class="time-btn disabled" disabled>
                             {{ time }}

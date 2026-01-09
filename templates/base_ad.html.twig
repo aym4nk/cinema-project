@@ -31,8 +31,13 @@
         <div class="btn_head">
             {% include 'film/_add_button.html.twig' %}
             <p class="user_ad">admin</p>
-            <button class="btn_h_b"><a class="l" href="{{ path('login') }}">disconect</a></button>
-
+            <form method="post" action="{{ path('logout') }}">
+                <input type="hidden" name="_csrf_token"
+                    value="{{ csrf_token('logout') }}">
+                <button type="submit" class="btn_h_b">
+                    Déconnexion
+                </button>
+            </form>
         </div>
     </div>
 </header>
