@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Register{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/register.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/login.css') }}">
+{% endblock %}
+
+{% block body %}
+    <div class="container-login">
+
+        <h2 class="title-login">Bonjour dans votre Cinéma Casablanca</h2>
+
+        <div class="card-sign">
+            <div class="signtitle">
+                <h1>Inscrivez-vous à Cinemas</h1>
+                <h2 class="h2_sign">Recevez toute l'actualité de votre Cinemas Casablanca.</h2>
+            </div>
+
+            <form class="form-sign" id="signupForm">
+                <div class="divsign">
+                    <div class="imghh">
+                        <img class="im standard-image" src="{{ asset('images/img2.png') }}" alt="cinema">
+                    </div>
+
+                    <div class="formsign">
+                        <input class="input-sign" type="text" placeholder="Nom" name="nom" required>
+                        <br><br>
+                        <input class="input-sign" type="text" placeholder="Prénom" name="prenom" required>
+                        <br><br>
+                        <input class="input-sign" type="email" placeholder="Email" name="email" required>
+                        <br><br>
+                        <input class="input-sign" type="password" placeholder="Mot de passe" name="password" required>
+                        <br><br>
+                        <input class="input-sign" type="password" placeholder="Confirmation mot de passe" name="password_confirmation" required>
+                        <br><br>
+                        <input class="btn-sign" type="submit" value="S'inscrire">
+                    </div>
+                </div>
+            </form>
+        </div>
+
+    </div>
+{% endblock %}

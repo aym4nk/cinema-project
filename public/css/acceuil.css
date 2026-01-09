@@ -1,0 +1,386 @@
+body{
+    background-color: black;
+    color: #fca311;
+    text-transform: capitalize;
+}
+.links_nav{
+    display: flex;
+    gap: 50px;
+    list-style: none;;
+    padding: 10px;
+    font-size: 20px;
+    text-decoration: none;
+    margin-top: 17px
+    ;
+}
+.link{
+    font-family: 'Star Killers', sans-serif;                                                                                          
+    text-decoration: none;
+    color: #fca311;
+    font-size: 24.5px;
+    margin-left:37px;
+    position: relative;
+}
+.title_d{
+    font-family: 'Star Killers', sans-serif;                                                                                          
+    font-size: large;
+    text-align: center;
+    margin-top: 0px;
+    text-shadow: 0px 0px 20px white;
+    margin-left: 130%;
+    color: #fca311;
+}
+.link::after{
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -3px;
+    height: 2px;
+    width: 100%;
+    background: currentColor;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.5s ease;
+}
+
+.link:hover{
+    color: white;
+}
+
+.link:hover::after{
+    transform: scaleX(1);
+}
+header{
+    background-color: black;
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    margin-top: -8px;
+    margin-left: -7px;
+    margin-right: -7px;
+}
+.container_head{
+    display: flex;
+    margin-bottom: 16px;
+
+}
+.title_head{
+    margin-left: 20px;
+    font-family: 'Star Killers', sans-serif;                                                                                          
+    margin-right: 15%;
+    font-size: x-large;
+    text-shadow: 0px 0px 10px #fca311;
+}
+.title_head:hover{
+    color: white;
+    transition: 0.5s;
+}
+.btn_head{
+    margin-left: 12%;
+    display: flex;
+    gap: 10px;
+}
+.btn_h{
+    background-color: black;
+    color: #fca311;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 15px;
+    cursor: pointer;
+    font-family: 'Star Killers', sans-serif;
+    width: 130px;
+    border: 1px solid #fca311;
+}
+.btn_h_b{
+    background-color: black;
+    color: #fca311;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 15px;
+    cursor: pointer;
+    font-family: 'Star Killers', sans-serif;
+    width: 150px;
+    border: 1px solid #fca311;
+}
+.l{
+    text-decoration: none;
+    color: #fca311;
+}
+.l:hover{
+    color: black;
+    transition: 0.5s;
+}
+.btn_h:hover{
+    background-color: #fca311;
+    color: black;
+    transition: 0.5s;
+}
+.btn_h_b:hover{
+    background-color: #fca311;
+    color: black;
+    transition: 0.5s;
+}
+footer{
+    background-color: black;
+     margin-bottom: -8px;
+    margin-left: -7px;
+    margin-right: -7px;
+}
+main{
+    min-height: auto;
+
+}
+
+
+
+.user_ad{
+    margin-left: 225%;
+    margin-top: 15%;
+    font-family: 'Unbounded', sans-serif;                                           
+    font-size: medium;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+.div1{
+    text-align: center;
+    margin-top: 50px;
+    font-size: large;
+    font-family: 'Unbounded', sans-serif;                                           
+    color: #fca311;
+    font-size: medium;
+
+}
+.link-footer{
+    color: #fca311;
+    transition: transition 0.5s ease;
+    font-size: small;
+
+
+}
+.link-footer:hover{
+    color: darkblue;
+
+
+}
+.linkfooter{
+    text-decoration: none;
+    color: #fca311;
+    font-size: large;
+    margin-top: -7%;
+
+}
+
+.spanfoot{
+    color: #fca311;
+    font-size: medium;
+}
+
+
+.footer-container:hover{
+    box-shadow: 5px 5px 10px #fca311;
+}
+
+.footer-container {
+    transition: box-shadow 0.3s;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 40px;
+    max-width: 1200px;
+    margin: auto;
+    flex-wrap: nowrap;
+    background-color: #fca311;
+    padding: 20px;
+    font-family: 'Unbounded', sans-serif;                                      
+    margin-top: -2%;
+    margin-bottom: -17%;
+    border-radius: 20px;
+
+}
+
+.footer-group {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    flex: 1 1 0;
+    min-width: 200px;
+}
+
+.footer-column {
+    flex: 1;
+    min-width: 200px;
+    margin: 10px;
+}
+
+.footer-column h3 {
+    font-size: 14px;
+}
+
+.footer-column ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-column ul li {
+    margin-bottom: 5px;
+    font-size: 13px;
+}
+
+.footer-column ul li a {
+    text-decoration: none;
+    color:black;
+}
+
+.footer-column ul li a:hover {
+    text-decoration: underline;
+}
+.fin{
+        text-align: center;
+        padding-bottom: 35px;
+        font-size: small;                                                
+
+}
+.dt{
+    font-size: 16px;
+    font-weight: bold;
+    color: black;
+}
+.title_fo{
+    font-size: small;
+    color: #fca311;
+    font-family: 'Afacad', sans-serif;
+    text-align: center;
+    font-family: 'Unbounded', sans-serif;
+}
+
+
+
+
+.standard-image {
+    height: 300px;
+    width: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+@media screen and (max-width: 768px) {
+  .standard-image { height: 200px; }
+}
+
+footer{
+
+    background-image: url(../images/foot.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover; 
+    margin-right: -8px;
+} 
+
+
+body {
+    background-color: #111;
+    color: #fff;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.container {
+    width: 90%;
+    margin: auto;
+    padding: 40px 0;
+}
+
+.title {
+    text-align: center;
+    font-family: 'Star Killers', sans-serif;                                                                                
+    color: #fca311;
+    margin-bottom: 70px;
+    text-shadow: 0px 0px 10px #fca311;
+
+}
+
+.films-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 75px;
+}
+
+.film-card {
+    background: #1c1c1c;
+    border-radius: 12px;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    margin-bottom: 70px;
+}
+
+.film-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0px 25px #fca311;
+}
+
+.film-card img {
+    width: 100%;
+    height: 320px;
+    object-fit: cover;
+}
+
+.no-image {
+    height: 320px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #333;
+    color: #aaa;
+}
+
+.film-info {
+    padding: 10px;
+    text-align: center;
+    color: #fca311;
+    
+}
+
+.film-info h2 {
+    text-transform: capitalize;
+    font-size: 18px;  
+    letter-spacing: 5px;
+  font-family: 'LAQUATSA', sans-serif;
+                                                
+}
+
+a{
+    text-decoration: none !important;
+}
+
+
+.film-info p {
+    
+    font-size: 14px;
+    color: #ccc;
+}
+
+.btn {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 8px 14px;
+    background: #e50914;
+    color: white;
+    text-decoration: none;
+    border-radius: 6px;
+    font-size: 14px;
+}
+
+.btn:hover {
+    background: #b20710;
+}

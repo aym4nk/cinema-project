@@ -1,0 +1,166 @@
+/* ===================== VARIABLES ===================== */
+:root {
+    --black: #000;
+    --dark: #111;
+    --orange: #fca311;
+    --white: #ffffff;
+    --gray: #cccccc;
+    --transition: 0.3s ease-in-out;
+}
+
+/* ===================== GLOBAL ===================== */
+body {
+    background-color: black;
+    color: var(--white);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+h2 {
+    color: var(--orange);
+    margin-bottom: 20px;
+    letter-spacing: 1px;
+}
+
+/* ===================== CARDS ===================== */
+.card,
+.card2 {
+    background: var(--dark);
+    border-radius: 12px;
+    padding: 25px;
+    margin: 30px auto;
+    width: 90%;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
+    transition: transform var(--transition), box-shadow var(--transition);
+}
+
+.card:hover,
+.card2:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(252, 163, 17, 0.3);
+}
+
+/* ===================== TABLE ===================== */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+thead {
+    background: var(--black);
+}
+
+thead th {
+    color: var(--orange);
+    text-transform: uppercase;
+    font-size: 14px;
+    padding: 12px;
+    border-bottom: 2px solid var(--orange);
+}
+
+tbody tr {
+    transition: background var(--transition);
+}
+
+tbody tr:hover {
+    background: rgba(252, 163, 17, 0.08);
+}
+
+tbody td {
+    padding: 12px;
+    text-align: center;
+    color: var(--gray);
+    border-bottom: 1px solid #222;
+}
+
+/* ===================== IMAGES ===================== */
+table img {
+    width: 60px;
+    height: 90px;
+    object-fit: cover;
+    border-radius: 6px;
+    transition: transform var(--transition), box-shadow var(--transition);
+}
+
+table img:hover {
+    transform: scale(1.08);
+    box-shadow: 0 0 15px rgba(252, 163, 17, 0.6);
+}
+
+/* ===================== BUTTONS ===================== */
+a,
+button {
+    text-decoration: none;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+/* Modifier */
+.btn-edit {
+    background: transparent;
+    color: var(--orange);
+    border: 1px solid var(--orange);
+    padding: 6px 14px;
+    border-radius: 20px;
+    transition: all var(--transition);
+}
+
+.btn-edit:hover {
+    background: var(--orange);
+    color: var(--black);
+}
+
+/* Supprimer */
+.btn-delete,
+.btn-delete2 {
+    background: transparent;
+    color: #ff4d4d;
+    border: 1px solid #ff4d4d;
+    padding: 6px 14px;
+    border-radius: 20px;
+    transition: all var(--transition);
+}
+
+.btn-delete:hover,
+.btn-delete2:hover {
+    background: #ff4d4d;
+    color: var(--white);
+}
+
+/* Ajouter */
+.btn_add {
+    display: inline-block;
+    background: var(--orange);
+    color: var(--black);
+    padding: 12px 22px;
+    border-radius: 30px;
+    transition: transform var(--transition), box-shadow var(--transition);
+}
+
+.btn_add:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(252, 163, 17, 0.6);
+}
+
+/* ===================== LINKS ===================== */
+.link_add {
+    color: var(--black);
+}
+
+/* ===================== RESPONSIVE ===================== */
+@media (max-width: 768px) {
+    table {
+        font-size: 13px;
+    }
+
+    .btn-edit,
+    .btn-delete,
+    .btn-delete2 {
+        padding: 5px 10px;
+    }
+
+    table img {
+        width: 45px;
+        height: 70px;
+    }
+}

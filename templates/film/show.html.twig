@@ -1,0 +1,23 @@
+{% extends 'base_ad.html.twig' %}
+
+{% block title %}{{ film.title }}{% endblock %}
+
+{% block body %}
+    <h1>{{ film.title }}</h1>
+
+    <p><strong>Director:</strong> {{ film.director }}</p>
+    <p>{{ film.description }}</p>
+
+    {% if film.trailerUrl %}
+        <p><strong>Trailer:</strong></p>
+        <video width="640" controls>
+            <source src="{{ film.trailerUrl }}" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    {% endif %}
+
+    {% if film.imageUrl %}
+        <p><img src="{{ film.imageUrl }}" alt="{{ film.title }}" style="max-width:300px"></p>
+    {% endif %}
+
+{% endblock %}

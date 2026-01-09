@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Accueil - Cinéma{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('css/acceuil.css') }}">
+{% endblock %}
+
+{% block body %}
+<div class="container">
+    <h1 class="title">Nos Films</h1>
+
+<div class="films-grid">
+    {% for film in films %}
+        <a href="{{ path('film_details', { id: film.id }) }}" class="film-link">
+            <div class="film-card">
+                {% if film.imageFilename %}
+                    <img src="{{ asset('uploads/images/' ~ film.imageFilename) }}">
+                {% endif %}
+
+                <div class="film-info">
+                    <h2>{{ film.title }}</h2>
+                </div>
+            </div>
+        </a>
+    {% endfor %}
+</div>
+</div>
+{% endblock %}

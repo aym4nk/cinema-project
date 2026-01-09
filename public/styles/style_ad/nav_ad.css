@@ -1,0 +1,17 @@
+/* Minimal nav_ad styles to match site palette */
+.links_nav{
+  display:flex;
+  gap:24px;
+}
+.link{
+  color:#fca311;
+  text-decoration:none;
+  font-family: 'Star Killers', sans-serif;
+}
+.btn_add.link_add{
+  background:#fca311;
+  color:black;
+  padding:8px 12px;
+  border-radius:8px;
+  text-decoration:none;
+}

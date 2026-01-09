@@ -1,0 +1,70 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ film.title }}{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('css/details.css') }}">
+{% endblock %}
+
+{% block body %}
+<div class="details-container">
+
+    <a href="{{ path('acceuil') }}" class="back">← Retour à l’accueil</a>
+
+    <div class="details-card">
+
+        {% if film.imageFilename %}
+            <img src="{{ asset('uploads/images/' ~ film.imageFilename) }}"
+                 alt="{{ film.title }}">
+        {% endif %}
+
+        <div class="details-info">
+            <h1>{{ film.title }}</h1>
+
+            <p class="description">
+                {{ film.description }}
+            </p>
+
+            {% if film.trailerFilename %}
+                <video controls>
+                    <source src="{{ asset('uploads/trailers/' ~ film.trailerFilename) }}">
+                    Votre navigateur ne supporte pas la vidéo.
+                </video>
+            {% endif %}
+        </div>
+
+    </div>
+
+    {# ====== HORAIRES DE RÉSERVATION ====== #}
+ <div class="schedule">
+    <h2>Réserver une séance</h2>
+
+    {% for day in days %}
+        {% set isToday = day|date('Y-m-d') == now|date('Y-m-d') %}
+
+        <div class="day {{ not isToday ? 'day-disabled' : '' }}">
+            <h3>{{ day|date('l d F') }}</h3>
+
+            <div class="times">
+                {% for time in times %}
+                    {% set showDateTime = date(day|date('Y-m-d') ~ ' ' ~ time) %}
+
+                    {% if isToday and showDateTime > now %}
+                        <button class="time-btn">
+                            {{ time }}
+                        </button>
+                    {% else %}
+                        <button class="time-btn disabled" disabled>
+                            {{ time }}
+                        </button>
+                    {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+    {% endfor %}
+</div>
+
+
+</div>
+{% endblock %}

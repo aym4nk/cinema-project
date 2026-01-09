@@ -1,0 +1,57 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Cinéma{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/cinema.css') }}">
+{% endblock %}
+
+{% block body %}
+    <div class="title-cinema">
+        <h2 class="h1-cinema1">Cinemas CASABLANCA :</h2>
+    </div>
+
+    <div class="cadre-images">
+        <div class="img-box">
+            <img class="standard-image" src="{{ asset('images/image1.jpg') }}" alt="Image 1">
+        </div>
+        <div class="img-box">
+            <img class="standard-image" src="{{ asset('images/image2.jpg') }}" alt="Image 2">
+        </div>
+    </div>
+
+    <div class="pictures">
+        <div class="title-cinema">
+            <h2 class="h1-cinema2">Plan d'accès au Cinemas :</h2>
+        </div>
+
+        <div class="cadre">
+            <iframe
+                class="map"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3323.3810018804224!2d-7.671347174416715!3d33.59541757333247!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xda7d306eef8cf9f%3A0xd849a9c0cb2ff2b0!2sCin%C3%A9ma%20Megarama!5e0!3m2!1sfr!2sma!4v1740178482441!5m2!1sfr!2sma"
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
+        </div>
+    </div>
+
+    <h2 class="h2-cinema3">Informations sur votre cinéma :</h2>
+
+    <div class="cinema-info">
+        <div class="info-box">
+            <span class="big-text">8 Salles</span>
+        </div>
+        <div class="info-box">
+            <span class="small-text">Parking (Gratuit)</span>
+        </div>
+        <div class="info-box">
+            <span class="small-text">Accès PMR</span>
+        </div>
+        <div class="info-box">
+            <span class="small-text">WiFi Gratuit</span>
+        </div>
+        <div class="info-box">
+            <span class="small-text">Placement Numéroté</span>
+        </div>
+    </div>
+{% endblock %}

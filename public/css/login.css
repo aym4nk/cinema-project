@@ -1,0 +1,214 @@
+
+.main-log{
+    min-height: 700px;    
+    /* opacity: 0.2:; */
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover; 
+    margin-bottom: -8px;
+    background-color: rgb(0, 0, 0);
+
+}
+.divlog{
+    display: flex;
+    
+    
+}
+
+.im{
+    height: 150%;
+    width: 80%;
+    margin-top: -27%;
+    }
+
+.title-login{
+    margin-top: -80px;
+    position: absolute;
+    white-space: nowrap;
+    animation: slide 5s linear 1;
+    background-color: black;
+    padding: 6px;
+    font-family: 'Star Killers', sans-serif;                                           
+    color: #fca311;
+    border-radius: 5px;
+    margin-left: 15%;
+    box-shadow: 0PX 0PX 2PX #fca311;
+
+}
+        @keyframes slide {
+            from {
+                left: -100%;
+            }
+            to {
+                left: 0.45%;
+            }
+        }
+.logtitle{
+    margin-left: 450px;
+    margin-top: 70px;
+    font-family: 'Unbounded', sans-serif;                                      
+    font-size: small;
+    color: black;
+    text-align: center;     
+    padding-top: 8px;             
+     
+}
+.card-login{
+    margin-left: 10%;
+    margin-right: 10%;
+    margin-top: 10%;
+    background-color: #fca311;
+    align-items: center;
+    border-radius: 20px;
+    height: 10%;
+    animation: rotatingShadow 12s infinite linear;
+    transition: 9s;
+    margin-bottom: 20%;
+}
+@keyframes rotatingShadow {
+  0% {
+    box-shadow: 10px 0 20px rgb(0, 0, 0), -10px 0 20px #fca311;
+  }
+  25% {
+    box-shadow: 0 10px 20px #fca311, 0 -10px 20px rgb(0, 0, 0);
+  }
+  50% {
+    box-shadow: -10px 0 20px rgb(0, 0, 0), 10px 0 20px #fca311;
+  }
+  75% {
+    box-shadow: 0 -10px 20px #fca311, 0 10px 20px rgb(0, 0, 0);
+  }
+  100% {
+    box-shadow: 10px 0 20px rgb(0, 0, 0), -10px 0 20px #fca311;
+  }
+}
+.form-login{
+    text-align: center;
+    padding: 40px;
+    margin-top: -29px;
+    /* padding-top: -200px; */
+    
+
+}
+.h2_log{
+    color: black;
+    font-size: small;
+    padding-bottom: 40px;
+    
+}
+.label1-log{
+    opacity: 0;
+}
+.label2-log{
+
+    opacity: 0;
+}
+.input-log{
+    padding :5px; 
+    background-color: #fca311;
+    outline: none;
+    border: none;
+    border-bottom:  2px solid black;
+    transition: border-bottom,0.3s ease;
+    width: 140%;
+    margin-left: 120px;
+    border-bottom: linear-gradient(to right, transparent, black);
+}
+.input-log:focus{
+    border: none;
+    border-bottom:  2px solid #ccc;
+    background-size: 100% 100%;
+}
+.input-log::placeholder {
+    color: black;
+    transition: opacity 0.3s ease;
+    margin-right: 64px;
+    font-family: 'Unbounded', sans-serif;                                      
+    font-size: medium;
+
+    }
+.input-log:focus::placeholder{
+    opacity: 0;
+}
+.btn-log{
+    text-transform: capitalize;
+    background-color: #fca311;
+    border: none;
+    border:2px solid black;
+    height: 40px;
+    border-radius:8px;
+    margin-right: 5px;
+    transition: background-color,0.3s;
+    margin-top: 22px;
+    padding-left: -30PX;
+    height: 50px;
+        font-family: 'Unbounded', sans-serif; 
+        margin-left: 53px;                                     
+
+
+}
+.btn-log:hover{
+    background-color: black;
+    color: #fca311;
+}
+.spinner {
+    border: 4px solid rgba(7, 6, 6, 0.3);
+    border-left-color: black;
+    border-radius: 50%;
+    width: 15px;
+    height: 15px;
+    animation: spin 1s linear infinite;
+    margin-left: 70%;
+    margin-top: -20px;
+    margin-bottom: 30px;
+}
+.autre2{
+    font-family: 'Afacad', sans-serif;
+    background-color: black;
+margin-left: 140px;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+@media screen and (max-width: 768px) {*
+    .spinner{
+        margin-left: 47%;
+    }
+  .container-login{
+    padding-right: 13px;
+    margin-bottom: -60px;
+  }
+.im{
+    display: none;
+}
+.logtitle{
+    margin-left: 10px;
+    font-size: small;
+}
+.title-login{
+    display: none;
+}
+.input-log{
+    margin-left: 40px;
+    width: 120%;
+}
+.btn-log{
+    margin-left: 130px;
+    width:70px;
+    padding-left: 15px;
+    padding-right: 100px;
+
+}
+.autre{
+    margin-left: 3%;
+    background-color: black;
+}
+.card-login{
+    width: 450px;
+    margin-top: -50px;
+    margin-left:40px ;
+}
+}

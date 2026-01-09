@@ -1,0 +1,95 @@
+{% extends 'base_ad.html.twig' %}
+
+{% block stylesheets %}
+<link rel="stylesheet" href="{{ asset('css/dashboard.css') }}">
+{% endblock %}
+
+{% block body %}
+<div style="padding-top: 30px">
+
+    {# ================== LISTE DES FILMS ================== #}
+    <div class="card">
+        <h2 class="list_ad">Liste des Films</h2>
+
+        <table class="films-table">
+            <thead>
+                <tr>
+                    <th>Affiche</th>
+                    <th>Titre</th>
+                    <th>Réalisateur</th>
+                    <th>description</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for film in films %}
+                    <tr>
+                        <td>
+                            {% if film.imageFilename %}
+                                <img src="{{ asset('uploads/images/' ~ film.imageFilename) }}" alt="{{ film.title }}">
+                            {% else %}
+                                —
+                            {% endif %}
+                        </td>
+                        <td>{{ film.title }}</td>
+                        <td>{{ film.director }}</td>
+                        <td>{{ film.description }}</td>
+                        <td>
+                            <a href="{{ path('film_edit', {id: film.id}) }}" class="btn-edit">Modifier</a>
+
+                            <form method="post" action="{{ path('film_delete', {id: film.id}) }}" style="display:inline" onsubmit="return confirm('Voulez-vous supprimer ce film ?');">
+                                <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ film.id) }}">
+                                <button class="btn-delete">Supprimer</button>
+                            </form>
+                        </td>
+                    </tr>
+                {% else %}
+                    <tr>
+                        <td colspan="5">Aucun film trouvé</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <a href="{{ path('film_new') }}" class="btn_add link_add">
+            Ajouter un film
+        </a>
+    </div>
+
+    {# ================== LISTE DES USERS ================== #}
+    <div class="card2">
+        <h2 class="list2_ad">Liste des Users</h2>
+
+        <table class="carde3">
+            <thead class="the">
+                <tr>
+                    <th>Nom</th>
+                    <th>Prénom</th>
+                    <th>Email</th>
+                    <th>Supprimer</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for user in users %}
+                    <tr>
+                        <td>{{ user.nom }}</td>
+                        <td>{{ user.prenom }}</td>
+                        <td>{{ user.email }}</td>
+                        <td>
+                            <form method="post" action="{{ path('user_delete', {id: user.id}) }}"
+                                  onsubmit="return confirm('Supprimer cet utilisateur ?');">
+                                <button class="btn-delete2">Oui</button>
+                            </form>
+                        </td>
+                    </tr>
+                {% else %}
+                    <tr>
+                        <td colspan="4">Aucun utilisateur trouvé</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+</div>
+{% endblock %}

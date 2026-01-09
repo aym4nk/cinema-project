@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>{% block title %}Cinemas{% endblock %}</title>
+
+    {# Global CSS #}
+    <link rel="stylesheet" href="{{ asset('css/acceuil.css') }}">
+
+    {# Per-page CSS #}
+    {% block stylesheets %}{% endblock %}
+
+    {# Fonts #}
+    <link href="https://fonts.cdnfonts.com/css/star-killers" rel="stylesheet">
+    <link href="https://fonts.cdnfonts.com/css/unbounded" rel="stylesheet">
+    <link href="https://fonts.cdnfonts.com/css/laquatsa" rel="stylesheet">
+                
+
+    {% block javascripts %}{% endblock %}
+</head>
+
+<body>
+<header>
+    <div class="container_head">
+        <h1 class="title_head">Cinemas</h1>
+
+        <nav class="links_nav">
+            <a class="link" href="{{ path('acceuil') }}">Accueil</a>
+            <a class="link" href="{{ path('cinema') }}">Cinéma</a>
+            <a class="link" href="{{ path('contact') }}">Contact</a>
+        </nav>
+
+        <div class="btn_head">
+            {% include 'film/_add_button.html.twig' %}
+            <button class="btn_h"><a class="l" href="{{ path('login') }}">login</a></button>
+            <button class="btn_h"><a class="l" href="{{ path('register') }}">register</a></button>
+
+        </div>
+    </div>
+</header>
+
+<main>
+    {% block body %}{% endblock %}
+</main>
+
+<footer>
+    <br><br>
+    <div class="div1">
+        Boulevard de la Corniche CASABLANCA |
+        Mentions légales |
+        <a class="link-footer" href="{{ path('contact') }}">Contact</a> |
+        Politique de confidentialité
+    </div>
+
+    <div>
+        <br><br>
+        <h2 class="title_fo">
+            <span class="linkfooter">C I N E M A S <span class="spanfoot">support :</span></span>
+        </h2>
+
+        <br><br><br>
+
+        <div class="footer-container">
+            <div class="footer-group">
+                <div class="footer-column">
+                    <h3 class="dt">LES NOUVEAUTÉS À L’AFFICHE</h3>
+                    <ul>
+                        <li><a href="#">Moana 2</a></li>
+                        <li><a href="#">Me Before You</a></li>
+                        <li><a href="#">Dilwale</a></li>
+                        <li><a href="#">Culpa Tuya</a></li>
+                        <li><a href="#">Tous les films</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-column">
+                    <h3 class="dt">À PROPOS</h3>
+                    <ul>
+                        <li><a href="#">Offres B2B</a></li>
+                        <li><a href="#">Offre anniversaire</a></li>
+                        <li><a href="#">Projection scolaire</a></li>
+                        <li><a href="#">L'expérience Pathé</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-group">
+                <div class="footer-column">
+                    <h3 class="dt">LIENS UTILES</h3>
+                    <ul>
+                        <li><a href="#">Paramétrer vos cookies</a></li>
+                        <li><a href="#">Conditions Générales</a></li>
+                        <li><a href="#">Politique CVD</a></li>
+                        <li><a href="#">Charte de protection des données</a></li>
+                        <li><a href="#">Mentions légales</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-column">
+                    <h3 class="dt">VOUS AVEZ DES QUESTIONS ?</h3>
+                    <ul>
+                        <li><a href="#">Centre d'aide</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="fin">
+            <br><br><br><br><br><br><br><br><br><br><br><br><br>
+            &copy; Khribech & ALAA – Création de site internet
+        </div>
+    </div>
+</footer>
+
+</body>
+</html>

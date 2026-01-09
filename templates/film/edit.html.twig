@@ -1,0 +1,16 @@
+{% extends 'base_ad.html.twig' %}
+
+{% block title %}Edit Film{% endblock %}
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('css/edit.css') }}">
+{% endblock %}
+{% block body %}
+<div class="main">
+    <h1>Edit Film</h1>
+
+    {{ form_start(form, {'attr': {'data-turbo': 'false'}}) }}
+        {{ form_widget(form) }}
+    {{ form_end(form) }}
+<div>
+{% endblock %}

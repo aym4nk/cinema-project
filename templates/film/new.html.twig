@@ -1,0 +1,24 @@
+{% extends 'base_ad.html.twig' %}
+
+
+{% block title %}Create Film{% endblock %}
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/new.css') }}">
+{% endblock %}
+
+{% block body %}
+    <h1>Create Film</h1>
+
+    {# Flash messages #}
+    {% for label, messages in app.flashes %}
+        {% for message in messages %}
+            <div class="flash-{{ label }}">{{ message }}</div>
+        {% endfor %}
+    {% endfor %}
+
+    {# Form (errors will be displayed by form_widget, but we also show flashes for validation) #}
+    {{ form_start(form, {'attr': {'data-turbo': 'false'}}) }}
+        {{ form_widget(form) }}
+    {{ form_end(form) }}
+
+{% endblock %}
