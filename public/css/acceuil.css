@@ -27,7 +27,7 @@ body{
     text-align: center;
     margin-top: 0px;
     text-shadow: 0px 0px 20px white;
-    margin-left: 130%;
+    margin-left: 150%;
     color: #ff8b1f;
 }
 .link::after{
@@ -70,6 +70,7 @@ header{
     margin-right: 15%;
     font-size: x-large;
     text-shadow: 0px 0px 10px #fca311;
+    color: #fca311;
 }
 .title_head:hover{
     color: white;
@@ -102,7 +103,7 @@ header{
     cursor: pointer;
     font-family: 'Star Killers', sans-serif;
     border: 1px solid #fca311;
-    margin-top: 10px;
+    margin-top: 16px;
 }
 .l{
     text-decoration: none;
@@ -136,15 +137,15 @@ main{
 
 
 .user_ad{
-    margin-left: 180%;
-    margin-top: 9.5%;
+    margin-left: 300%;
+    margin-top: 15%;
     font-family: 'Unbounded', sans-serif;                                           
     font-size: medium;
 }
 
 .user_info{
-    margin-left: 8%;
-    margin-top: 10%;
+    margin-left: -8%;
+    margin-top: 8%;
     font-family: 'Unbounded', sans-serif;                                           
     font-size: medium;
     display: flex;
@@ -176,8 +177,7 @@ main{
     font-family: 'Star Killers', sans-serif;
     width: 130px;
     border: 1px solid #fca311;
-    margin-left: 10%;
-    margin-top: 10%;
+    margin-top: 12%;
 }
 .btn_h_log:hover{
     background-color: #fca311;
@@ -394,12 +394,18 @@ body {
 
 .film-info h2 {
     text-transform: capitalize;
-    font-size: 18px;  
+    font-size: 20px;  
     letter-spacing: 5px;
-  font-family: 'LAQUATSA', sans-serif;
+     font-family: 'PP Pangaia', sans-serif;                                           
+    letter-spacing: 3px;
+
+
                                                 
 }
+.spanfoot2{
+    font-family: 'Star Killers', sans-serif;                                                                                
 
+}
 a{
     text-decoration: none !important;
 }

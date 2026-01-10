@@ -31,11 +31,11 @@
         <div class="btn_head">
             {% include 'film/_add_button.html.twig' %}
             <p class="user_ad">admin</p>
-            <form method="post" action="{{ path('logout') }}">
+            <form class="form_dec" method="post" action="{{ path('logout') }}">
                 <input type="hidden" name="_csrf_token"
                     value="{{ csrf_token('logout') }}">
                 <button type="submit" class="btn_h_b">
-                    Déconnexion
+                    Logout
                 </button>
             </form>
         </div>

@@ -32,12 +32,14 @@
             border: 1px solid #000;
             padding: 15px;
         }
+
+
     </style>
 </head>
 
 <body>
 
-<h1 class="title">🎟️ Reçu de réservation</h1>
+<h1 class="title">Reçu de réservation</h1>
 
 <div class="film">
     <img src="{{ absolute_url(asset('uploads/images/' ~ film.imageFilename)) }}" alt="{{ film.title }}">
@@ -53,6 +55,8 @@
 <div class="box">
     <p><strong>Client :</strong> {{ user.nom }} {{ user.prenom }}</p>
     <p><strong>Email :</strong> {{ user.email }}</p>
+    <p><strong>Tarif :</strong> <span id="totalPrice">0</span> DH</p>
+
 </div>
 
 <p style="margin-top:30px;">

@@ -108,23 +108,8 @@ ul li {
 }
 
 /* ===================== SUBMIT BUTTON ===================== */
-button[type="submit"] {
-    background: var(--orange);
-    color: var(--black);
-    border: none;
-    padding: 14px;
-    width: 100%;
-    border-radius: 30px;
-    font-size: 16px;
-    font-weight: 700;
-    margin-top: 20px;
-    transition: transform var(--transition), box-shadow var(--transition);
-}
 
-button[type="submit"]:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 10px 30px rgba(252, 163, 17, 0.6);
-}
+
 
 /* ===================== BACK LINK ===================== */
 a {
@@ -158,4 +143,74 @@ a:hover {
         width: 90%;
         padding: 25px;
     }
+}
+
+
+.title_d{
+    margin-left: 140%;
+    font-size: large;
+    margin-top: 22px;
+    color: #fca311;
+}
+
+
+
+.form-actions {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 30px;
+}
+
+.btn-sav{
+    background: transparent;
+    border: 2px solid #fca311;
+    color: #fca311;
+    border-radius: 30px;
+    font-size: 15px;
+    font-weight: bold;
+    text-decoration: none;
+    transition: 0.3s ease;
+    height: 47px;
+    margin-top: 24px; 
+    width: 120px;
+    margin-left: 320px;
+}
+
+.btn-sav:hover {
+    background: #fca311;
+    color: #000;
+}
+
+.btn-cancel {
+    background: transparent;
+    border: 2px solid #fca311;
+    color: #fca311;
+    padding: 12px 32px;
+    border-radius: 30px;
+    font-size: 15px;
+    font-weight: bold;
+    text-decoration: none;
+    transition: 0.3s ease;
+    margin-left: -10px;
+}
+
+.btn-cancel:hover {
+    background: #fca311;
+    color: #000;
+}
+.btn_h_b{
+    background-color: #000;
+}
+.user_ad{
+    margin-left: 200px;
+    margin-top: 50px;
+}
+.form_dec{
+    background-color: black;
+    margin-top: -10px;
+}
+.title_d{
+    margin-top: 20px;
+    margin-left: 230px;
 }

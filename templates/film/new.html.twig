@@ -18,7 +18,21 @@
 
     {# Form (errors will be displayed by form_widget, but we also show flashes for validation) #}
     {{ form_start(form, {'attr': {'data-turbo': 'false'}}) }}
-        {{ form_widget(form) }}
+    {{ form_row(form.title) }}
+    {{ form_row(form.description) }}
+    {{ form_row(form.director) }}
+    {{ form_row(form.trailerFile) }}
+    {{ form_row(form.imageFile) }}
+
+    <div class="form-actions">
+        <button type="submit" class="btn-sav">
+            Save
+        </button>
+
+        <a href="{{ path('dash') }}" class="btn-cancel">
+            cancel
+        </a>
+    </div>
     {{ form_end(form) }}
 
 {% endblock %}

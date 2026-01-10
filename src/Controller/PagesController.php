@@ -112,36 +112,6 @@ public function recuPdf(
     $time = $request->query->get('time');
     $salle = random_int(1, 8);
 
-    // 1️⃣ HTML ديال PDF
-    $html = $this->renderView('recu_pdf.html.twig', [
-        'film' => $film,
-        'date' => $date,
-        'time' => $time,
-        'salle' => $salle,
-        'user' => $this->getUser(),
-    ]);
-
-        // 2️⃣ إعدادات Dompdf
-        $options = new Options();
-        $options->set('defaultFont', 'Helvetica');
-        $options->set('isRemoteEnabled', true);
-
-        $dompdf = new Dompdf($options);
-        $dompdf->loadHtml($html);
-        $dompdf->setPaper('A4', 'portrait');
-        $dompdf->render();
-
-        // 3️⃣ Response تحميل
-        $response = new Response($dompdf->output());
-        $disposition = $response->headers->makeDisposition(
-            ResponseHeaderBag::DISPOSITION_ATTACHMENT,
-            'recu_'.$film->getId().'.pdf'
-        );
-
-        $response->headers->set('Content-Type', 'application/pdf');
-        $response->headers->set('Content-Disposition', $disposition);
-
-        return $response;
-    }
+}
 
 }

@@ -9,8 +9,9 @@
 {% block body %}
 <div class="recu-container">
 
-    <div class="recu-card">
-        <h1 class="recu-title">🎟️ Reçu de réservation</h1>
+
+    <div class="recu-card" id="recuCapture">
+        <h1 class="recu-title"> Reçu de réservation</h1>
 
         <div class="recu-film">
             <img src="{{ asset('uploads/images/' ~ film.imageFilename) }}"
@@ -28,20 +29,115 @@
             <h3>Informations client</h3>
             <p><strong>Nom :</strong> {{ app.user.nom }} {{ app.user.prenom }}</p>
             <p><strong>Email :</strong> {{ app.user.email }}</p>
-        </div>
+        </div> 
+        <div class="recu-tarif">
+    <h3>Choisissez votre tarif</h3>
+
+    <select id="tarifSelect" onchange="updateTotal()">
+        <option value="0" selected>-- Choisir un tarif --</option>
+
+        <option value="50" data-type="matin">Matin - 50 DH</option>
+        <option value="40" data-type="midi">Midi - 40 DH</option>
+        <option value="60" data-type="soir">Soir - 60 DH</option>
+
+        <option value="30">Handicap - 30 DH</option>
+        <option value="20">Enfant (-12 ans) - 20 DH</option>
+    </select>
+
+    <p class="total">
+        <strong>Total :</strong>
+        <span id="totalPrice">0</span> DH
+    </p>
+</div>
+
 
         <div class="recu-footer">
             <p>Merci pour votre réservation 🎬</p>
-        <a href="{{ path('recu_pdf', {
-            id: film.id,
-            date: date,
-            time: time
-        }) }}" class="btn-back">
-            Télécharger le PDF
-        </a>
-
         </div>
+
     </div>
+    <button class="btn-pdf" onclick="downloadPDF()">
+        Télécharger le PDF
+    </button>
 
 </div>
+<script>
+async function downloadPDF() {
+    const { jsPDF } = window.jspdf;
+
+    const element = document.getElementById('recuCapture');
+    const tarifSelect = document.getElementById('tarifSelect');
+
+    // 🔹 خبي select قبل التصوير
+    tarifSelect.style.display = 'none';
+
+    const canvas = await html2canvas(element, {
+        scale: 2,
+        useCORS: true,
+        backgroundColor: '#ffffff'
+    });
+
+    const imgData = canvas.toDataURL('image/png');
+
+    const pdf = new jsPDF('p', 'mm', 'a4');
+    const pdfWidth = pdf.internal.pageSize.getWidth();
+    const pdfHeight = (canvas.height * pdfWidth) / canvas.width;
+
+    pdf.addImage(imgData, 'PNG', 0, 10, pdfWidth, pdfHeight);
+    pdf.save('recu.pdf');
+
+    // 🔹 رجّع select من بعد
+    tarifSelect.style.display = 'block';
+}
+</script>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+
+    const time = "{{ time }}"; // مثال: 14:30
+    const hour = parseInt(time.split(':')[0]);
+
+    const select = document.getElementById('tarifSelect');
+
+    const matin = document.querySelector('[data-type="matin"]');
+    const midi  = document.querySelector('[data-type="midi"]');
+    const soir  = document.querySelector('[data-type="soir"]');
+
+    // reset
+    matin.disabled = false;
+    midi.disabled  = false;
+    soir.disabled  = false;
+
+    // 🌅 MATIN : قبل 12
+    if (hour >= 12) {
+        matin.disabled = true;
+    }
+
+    // 🌞 MIDI : من 12 حتى 17
+    if (hour < 12 || hour >= 18) {
+        midi.disabled = true;
+    }
+
+    // 🌙 SOIR : من 18 فما فوق
+    if (hour < 18) {
+        soir.disabled = true;
+    }
+
+    // ⛔ إعادة الاختيار الافتراضي
+    select.selectedIndex = 0;
+    document.getElementById('totalPrice').innerText = 0;
+});
+
+function updateTotal() {
+    const select = document.getElementById('tarifSelect');
+    document.getElementById('totalPrice').innerText = select.value;
+}
+</script>
+
+
+}
+    const price = document.getElementById('totalPrice').innerText;
+disableTarifsByTime();
+</script>
+
 {% endblock %}

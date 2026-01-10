@@ -14,9 +14,9 @@
         <table class="films-table">
             <thead>
                 <tr>
-                    <th>Affiche</th>
-                    <th>Titre</th>
-                    <th>Réalisateur</th>
+                    <th>picture</th>
+                    <th>Title</th>
+                    <th>Director</th>
                     <th>Description</th>
                     <th>Actions</th>
                 </tr>
@@ -46,16 +46,17 @@
                             <div class="action-buttons">
                                 <a href="{{ path('film_edit', {id: film.id}) }}"
                                    class="btn-edit">
-                                    Modifier
+                                    Update
                                 </a>
 
                                 <form method="post"
                                       action="{{ path('film_delete', {id: film.id}) }}"
                                       onsubmit="return confirm('Voulez-vous supprimer ce film ?');">
-                                    <input type="hidden"
-                                           name="_token"
-                                           value="{{ csrf_token('delete' ~ film.id) }}">
-                                    <button class="btn-delete">Supprimer</button>
+<input type="hidden"
+       name="_token"
+       value="{{ csrf_token('delete_' ~ film.id) }}">
+
+                                    <button class="btn-delete">Delete</button>
                                 </form>
                             </div>
                         </td>
@@ -80,8 +81,8 @@
         <table class="carde3">
             <thead class="the">
                 <tr>
-                    <th>Nom</th>
-                    <th>Prénom</th>
+                    <th>last name</th>
+                    <th>first name</th>
                     <th>Email</th>
                     <th>Action</th>
                 </tr>
@@ -95,10 +96,16 @@
                         <td>
                             {% if 'ROLE_ADMIN' not in user.roles %}
                                 <form method="post"
-                                      action="{{ path('user_delete', {id: user.id}) }}"
-                                      onsubmit="return confirm('Supprimer cet utilisateur ?');">
-                                    <button class="btn-delete2">Supprimer</button>
+                                    action="{{ path('user_delete', {id: user.id}) }}"
+                                    onsubmit="return confirm('Supprimer cet utilisateur ?');">
+                                    
+                                    <input type="hidden"
+                                        name="_token"
+                                        value="{{ csrf_token('delete' ~ user.id) }}">
+
+                                    <button type="submit" class="btn-delete2">Supprimer</button>
                                 </form>
+
                             {% else %}
                                 <span style="color: gray; font-weight: bold;">
                                     ADMIN

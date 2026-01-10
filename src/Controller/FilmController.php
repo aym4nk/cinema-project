@@ -31,7 +31,6 @@ class FilmController extends AbstractController
             $em->persist($film);
             $em->flush();
 
-            $this->addFlash('success', 'Film ajouté avec succès 🎬');
             return $this->redirectToRoute('dash');
         }
 
@@ -53,7 +52,6 @@ class FilmController extends AbstractController
             $this->handleUploads($form, $film);
             $em->flush();
 
-            $this->addFlash('success', 'Film modifié avec succès ✏️');
             return $this->redirectToRoute('dash');
         }
 
@@ -72,7 +70,6 @@ class FilmController extends AbstractController
         if ($this->isCsrfTokenValid('delete_' . $film->getId(), $request->request->get('_token'))) {
             $em->remove($film);
             $em->flush();
-            $this->addFlash('success', 'Film supprimé 🗑️');
         }
 
         return $this->redirectToRoute('dash');
@@ -87,7 +84,7 @@ class FilmController extends AbstractController
         $now = new \DateTime();
 
     // Heures possibles
-    $times = ['12:00', '14:30', '17:00', '19:30', '22:00'];
+    $times = [ '09:00', '10:45', '12:00', '14:30', '17:00', '19:30', '22:00'];
 
     // Aujourd’hui + 4 jours
     $days = [];

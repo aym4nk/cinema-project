@@ -16,6 +16,8 @@
     <link href="https://fonts.cdnfonts.com/css/star-killers" rel="stylesheet">
     <link href="https://fonts.cdnfonts.com/css/unbounded" rel="stylesheet">
     <link href="https://fonts.cdnfonts.com/css/laquatsa" rel="stylesheet">
+    <link href="https://fonts.cdnfonts.com/css/pp-pangaia" rel="stylesheet">
+                
                 
 
     {% block javascripts %}{% endblock %}
@@ -24,7 +26,7 @@
 <body>
 <header>
     <div class="container_head">
-        <h1 class="title_head">Cinemas</h1>
+        <h1 class="title_head"><a class="title_head" href="{{ path('acceuil') }}">Cinemas</a></h1>
 
         <nav class="links_nav">
             <a class="link" href="{{ path('acceuil') }}">Accueil</a>
@@ -74,7 +76,7 @@
     <div>
         <br><br>
         <h2 class="title_fo">
-            <span class="linkfooter">C I N E M A S <span class="spanfoot">support :</span></span>
+            <span class="linkfooter"><span class="spanfoot2">C I N E M A S </span><span class="spanfoot">support :</span></span>
         </h2>
 
         <br><br><br>
@@ -126,7 +128,7 @@
 
         <div class="fin">
             <br><br><br><br><br><br><br><br><br><br><br><br><br>
-            &copy; Khribech & ALAA – Création de site internet
+            &copy; Khribech & Laich – Création de site internet
         </div>
     </div>
 </footer>
@@ -148,6 +150,8 @@ document.addEventListener("DOMContentLoaded", function () {
     elements.forEach(el => observer.observe(el));
 });
 </script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 
 </body>
 </html>
